@@ -1,0 +1,62 @@
+<app-bhome></app-bhome>
+  <div class="container pt-md-5">
+    <form [formGroup]="actualiteForm" (ngSubmit)="onSave()">
+      <div class="form-group shadow-textarea">
+        <label>Titre</label>
+        <input class="form-control z-depth-1" formControlName="titre"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Description</label>
+        <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="actualiteForm.invalid">Ajouter</button>
+    </form>
+  </div>
+  <div class="container pt-md-5" *ngIf="actualite != null">
+    <form [formGroup]="modificationForm" (ngSubmit)="onModify()">
+      <div class="form-group shadow-textarea">
+        <label>id</label>
+        <input class="form-control z-depth-1" value="{{actualite.id}}" readonly formControlName="id"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Titre</label>
+        <input class="form-control z-depth-1" formControlName="titre" value="{{actualite.titre}}"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Description</label>
+        <ejs-richtexteditor formControlName="description" value="{{actualite.description}}"></ejs-richtexteditor>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>dateAjout</label>
+        <input class="form-control z-depth-1" type="datetime" formControlName="dateAjout" placeholder="{{actualite.dateAjout | date:'d/M/y HH:MM'}}"/>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
+    </form>
+  </div>
+  
+  <div class="container">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">titre</th>
+        <th scope="col">description</th>
+        <th scope="col">date</th>
+        <th scope="col">action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let actualite of actualites">
+        <th scope="row">{{actualite.id}}</th>
+        <td>{{actualite.titre}}</td>
+        <td [innerHTML]="actualite.description"></td>
+        <td>{{actualite.dateAjout | date:'d/M/y HH:MM'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(actualite.id)">supprimer</button>
+          <button class="btn btn-success" (click)="onModBtn(actualite.id)">modifier</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+   </div>
+  
