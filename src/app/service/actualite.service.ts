@@ -3,7 +3,9 @@ import {Actualite} from '../model/actualite';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {error} from 'util';
+
 const API_URL = 'http://localhost:8000/api/actualites';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +13,16 @@ export class ActualiteService {
   actualites: Actualite[] = [];
   erreur: string;
   actualiteSubject = new Subject<Actualite[]>();
+  actualite : Actualite;
+
   constructor(private http: HttpClient) {
     this.getActualites();
   }
+
   emitActualites() {
     this.actualiteSubject.next(this.actualites);
   }
+
   getActualites() {
       return this.http.get(API_URL + '.json').subscribe(
         (response: Actualite[]) => {
@@ -28,6 +34,14 @@ export class ActualiteService {
       }
       );
   }
+
+  getActualite(id : number){
+    const index = this.actualites.findIndex(d => d.id === id);
+    console.log(this.actualites[index]);
+    return this.actualites[index];
+
+  }
+
   postActualite(actualite: Actualite) {
     return this.http.post(API_URL + '.json', actualite).subscribe(
       (response: Actualite) => {
@@ -39,6 +53,7 @@ export class ActualiteService {
       }
     );
   }
+
   deleteActualite(id: number) {
     return this.http.delete(API_URL + '/' + id + '.json').subscribe(
       () => {
@@ -52,6 +67,7 @@ export class ActualiteService {
       }
     );
   }
+
   patchActualite(id: number, actualite: Actualite) {
     return this.http.put(API_URL + '/' + id + '.json', actualite).subscribe(
       (response: Actualite) => {
@@ -65,4 +81,5 @@ export class ActualiteService {
       }
     );
   }
+
 }

@@ -1,0 +1,14 @@
+<app-bhome></app-bhome>
+<div class="container pt-md-5" *ngIf="actualite == null">
+    <form [formGroup]="actualiteForm" (ngSubmit)="onSave()">
+      <div class="form-group shadow-textarea">
+        <label>Titre</label>
+        <input class="form-control z-depth-1" formControlName="titre"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Description</label>
+        <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="actualiteForm.invalid">Ajouter</button>
+    </form>
+  </div>

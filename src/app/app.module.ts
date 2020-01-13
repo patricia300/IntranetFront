@@ -20,6 +20,8 @@ import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
 import { ActualiteService } from './service/actualite.service';
 import { MediaObjectService } from './service/media-object.service';
 import { NouveauEmployeService } from './service/nouveau-employe.service';
+import { ActualiteFormComponent } from './backOffice/actualite/actualite-form/actualite-form.component';
+import { ActualiteModifComponent } from './backOffice/actualite/actualite-modif/actualite-modif.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { NouveauEmployeService } from './service/nouveau-employe.service';
     ActualiteComponent,
     NouveauEmployeComponent,
     BHomeComponent,
+    ActualiteFormComponent,
+    ActualiteModifComponent,
   ],
   imports: [
     BrowserModule,
