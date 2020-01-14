@@ -10,8 +10,8 @@ export class BHomeComponent implements OnInit {
   width: string;
   navStatut;
   constructor(private appService: SideNavService) {
-    this.width = '0px';
-    this.navStatut = false;
+    this.width = '250px';
+    this.navStatut = true;
    }
 
   ngOnInit() {
