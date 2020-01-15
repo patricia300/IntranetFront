@@ -1,0 +1,23 @@
+<app-bhome></app-bhome>
+<div class="jumbotron container pt-md-5">
+  <form [formGroup]="nouveauEmployeForm" (ngSubmit)="onModify()">
+    <div class="form-group shadow-textarea">
+      <input class="form-control z-depth-1" readonly formControlName="nom" value="id : {{nouveau.id}}"/>
+    </div>
+    <div class="form-group shadow-textarea">
+      <label>nom</label>
+      <input class="form-control z-depth-1" formControlName="nom" value="{{nouveau.nom}}"/>
+    </div>
+    <div class="row">
+      <img [src]="Url + nouveau.contentUrl" class="col-md-2" alt="">
+      <div class="col-md-5">
+        <div class="form-group shadow-textarea">
+          <label>poste</label>
+          <input class="form-control z-depth-1" formControlName="poste" value="{{nouveau.poste}}"/>
+        </div>
+        <input class="form-control z-depth-1" type="file" (change)="onFileSelected($event)" />
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="nouveauEmployeForm.invalid">Modifier</button>
+  </form>
+</div>

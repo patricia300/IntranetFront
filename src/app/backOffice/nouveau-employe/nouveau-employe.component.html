@@ -1,27 +1,8 @@
 <app-bhome></app-bhome>
-<div class="container pt-md-5">
-  <form [formGroup]="nouveauEmployeForm" (ngSubmit)="onSave()">
-    <div class="form-group shadow-textarea">
-      <label>nom</label>
-      <input class="form-control z-depth-1" formControlName="nom"/>
-    </div>
-    <div class="form-group shadow-textarea">
-      <label>poste</label>
-      <input class="form-control z-depth-1" formControlName="poste"/>
-    </div>
-    <input class="form-control z-depth-1 col-md-5" type="file" (change)="onFileSelected($event)" />
-   <!-- <select class="browser-default custom-select" formControlName="image">
-      <option selected>choose image<option>
-      <option *ngFor="let image of images" value="{{image.id}}">{{image.id}} - {{image.contentUrl}}</option>
-    </select>-->
-    <button class="btn btn-primary" type="submit" [disabled]="nouveauEmployeForm.invalid">Ajouter</button>
-  </form>
-  <!--<div class="form-group shadow-textarea row" >
-    <input class="form-control z-depth-1 col-md-5" type="file" (change)="onFileSelected($event)" />
-    <button class="btn btn-primary " type="button" (click)="onUpload()">upload</button>
-  </div>
-</div>-->
-<div class="container">
+<div class="container jumbotron pt-md-5">
+
+  <a routerLink="/nouveau/ajout" class="btn btn-action">Ajouter nouveau employé</a>
+
   <table class="table table-bordered" *ngIf="nouveauEmployes">
     <thead>
     <tr>
@@ -40,7 +21,7 @@
       <td><img [src]="Url + nouveau.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
       <td>
         <button class="btn btn-danger" (click)="onDelete(nouveau)">supprimer</button>
-        <button class="btn btn-success">modifier</button>
+        <a class="btn btn-success" [routerLink]="['/nouveau/edit' , nouveau.id]">modifier</a>
       </td>
     </tr>
     </tbody>

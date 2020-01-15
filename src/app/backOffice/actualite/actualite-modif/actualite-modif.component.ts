@@ -10,8 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./actualite-modif.component.css']
 })
 export class ActualiteModifComponent implements OnInit {
+  
   modificationForm: FormGroup;
   actualite : Actualite;
+  
+  id;
+
   constructor(private formBuilder: FormBuilder , 
               private actualiteService : ActualiteService ,
               private router : Router,
@@ -20,8 +24,8 @@ export class ActualiteModifComponent implements OnInit {
               }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.actualite = this.actualiteService.getActualite(+id);            
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.actualite = this.actualiteService.getActualite(+this.id);            
     this.initForm();
   }
 
@@ -34,13 +38,13 @@ export class ActualiteModifComponent implements OnInit {
       });
     
 }
+
   onModify() {
-    const id = this.modificationForm.get('id').value;
     const titre = this.modificationForm.get('titre').value;
     const description = this.modificationForm.get('description').value;
     const dateAjout = this.modificationForm.get('dateAjout').value;
     const actualite = new Actualite(titre, description, dateAjout);
-    this.actualiteService.patchActualite(id, actualite);
+    this.actualiteService.patchActualite(+this.id, actualite);
     this.router.navigate(['actualiteB']);
     this.actualite = null;
   }

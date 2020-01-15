@@ -9,13 +9,14 @@ import { SideNavService } from 'src/app/service/side-nav.service';
 export class BHomeComponent implements OnInit {
   width: string;
   navStatut;
+  
   constructor(private appService: SideNavService) {
     this.width = '250px';
     this.navStatut = true;
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   onOpenNav() {
     this.width = '250px';
     this.appService.onOpenNav();

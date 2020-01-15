@@ -22,6 +22,8 @@ import { MediaObjectService } from './service/media-object.service';
 import { NouveauEmployeService } from './service/nouveau-employe.service';
 import { ActualiteFormComponent } from './backOffice/actualite/actualite-form/actualite-form.component';
 import { ActualiteModifComponent } from './backOffice/actualite/actualite-modif/actualite-modif.component';
+import { EmployeNewComponent } from './backOffice/nouveau-employe/employe-new/employe-new.component';
+import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modification-nouveau/modification-nouveau.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { ActualiteModifComponent } from './backOffice/actualite/actualite-modif/
     BHomeComponent,
     ActualiteFormComponent,
     ActualiteModifComponent,
+    EmployeNewComponent,
+    ModificationNouveauComponent,
+   
   ],
   imports: [
     BrowserModule,

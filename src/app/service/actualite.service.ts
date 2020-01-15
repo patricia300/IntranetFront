@@ -37,7 +37,7 @@ export class ActualiteService {
 
   getActualite(id : number){
     const index = this.actualites.findIndex(d => d.id === id);
-    console.log(this.actualites[index]);
+    //console.log(this.actualites[index]);
     return this.actualites[index];
 
   }
@@ -76,7 +76,7 @@ export class ActualiteService {
         this.actualites.push(response);
         this.emitActualites();
       },
-      () => {
+      (error) => {
         console.log(error);
       }
     );

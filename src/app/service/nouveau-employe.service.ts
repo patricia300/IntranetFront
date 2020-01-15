@@ -4,8 +4,10 @@ import {Subject, Subscription} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { MediaObjectService } from './media-object.service';
 import {MediaObject} from '../model/media-object';
+
 const API_URL = 'http://127.0.0.1:8000/api/nouveau_employes';
 const IMAGE_URL = 'http://127.0.0.1:8000/api/media_objects';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +16,11 @@ export class NouveauEmployeService {
   NouveauemployeSubject = new Subject<NouveauEmploye[]>();
   mediaObject: MediaObject[] = [];
   MediaObjectsub: Subscription;
+
   constructor(private http: HttpClient, private mediaObjectService: MediaObjectService) {
+    this.getNouveauemployes();
   }
+
   emitNouveauEmploye() {
     this.NouveauemployeSubject.next(this.nouveauEmployes);
   }
@@ -30,6 +35,12 @@ export class NouveauEmployeService {
         console.log(error);
       }
     );
+  }
+
+  getNouveau(id : number){
+      let index = this.nouveauEmployes.findIndex(d => d.id === id);
+      console.log(index);
+      return this.nouveauEmployes[index];
   }
   
   postNouveauEmploye(nouveauEmploye: NouveauEmploye , fd : FormData) { 
@@ -74,6 +85,29 @@ export class NouveauEmployeService {
         console.log(error);
       }
     );
+  }
+
+  putNouveau(id:number , nouveau : NouveauEmploye , fd : FormData){
+    this.http.post(IMAGE_URL, fd).subscribe(
+      (response : any) => {
+        nouveau.image  = '/api/media_objects/' + response.id;
+        nouveau.contentUrl = response.contentUrl;
+        this.mediaObject.push(response);
+        this.mediaObjectService.emitImages();
+        this.http.put(API_URL + '/' + id + '.json', nouveau).subscribe(
+          (response : NouveauEmploye) => {
+            let index = this.nouveauEmployes.findIndex(d => d.id === id);
+            this.nouveauEmployes.splice(index , 1);
+            this.nouveauEmployes.push(response);
+            this.emitNouveauEmploye();
+          }
+      );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+      
   }
 
 }

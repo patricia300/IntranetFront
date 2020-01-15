@@ -1,0 +1,17 @@
+<app-bhome></app-bhome>
+<div class="jumbotron container pt-md-5">
+  <form [formGroup]="nouveauEmployeForm" (ngSubmit)="onSave()">
+    <div class="form-group shadow-textarea">
+      <label>nom</label>
+      <input class="form-control z-depth-1" formControlName="nom"/>
+    </div>
+    <div class="form-group shadow-textarea">
+      <label>poste</label>
+      <input class="form-control z-depth-1" formControlName="poste"/>
+    </div>
+
+    <input class="form-control z-depth-1 col-md-5" type="file" (change)="onFileSelected($event)" />
+
+    <button class="btn btn-primary" type="submit" [disabled]="nouveauEmployeForm.invalid">Ajouter</button>
+  </form>
+</div>

@@ -8,7 +8,7 @@ export class NouveauEmploye {
   contentUrl : string;
 
   // @ts-ignore
-  constructor(public nom: string, public poste: string /*,public image: string*/) {
+  constructor(public nom: string, public poste: string) {
   }
 
 }
