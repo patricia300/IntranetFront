@@ -24,6 +24,9 @@ import { ActualiteFormComponent } from './backOffice/actualite/actualite-form/ac
 import { ActualiteModifComponent } from './backOffice/actualite/actualite-modif/actualite-modif.component';
 import { EmployeNewComponent } from './backOffice/nouveau-employe/employe-new/employe-new.component';
 import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modification-nouveau/modification-nouveau.component';
+import { ListeComponent } from './backOffice/portrait/liste/liste.component';
+import { NouveauComponent } from './backOffice/portrait/nouveau/nouveau.component';
+import { EditComponent } from './backOffice/portrait/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modif
     ActualiteModifComponent,
     EmployeNewComponent,
     ModificationNouveauComponent,
+    ListeComponent,
+    NouveauComponent,
+    EditComponent,
    
   ],
   imports: [

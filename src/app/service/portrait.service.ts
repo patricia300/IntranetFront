@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Portrait } from '../model/portrait';
 import { Subject, Subscription } from 'rxjs';
 import { MediaObject } from '../model/media-object';
@@ -11,7 +11,7 @@ const IMAGE_URL = 'http://127.0.0.1:8000/api/media_objects';
 @Injectable({
   providedIn: 'root'
 })
-export class PortraitServiceService {
+export class PortraitService implements OnDestroy {
  
   portraits : Portrait[] = [];
   portraitSubject = new Subject<Portrait[]>();
@@ -109,6 +109,10 @@ export class PortraitServiceService {
       }
     );
       
+  }
+
+  ngOnDestroy(){
+    this.mediaSub.unsubscribe();
   }
 
 }

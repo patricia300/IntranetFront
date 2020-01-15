@@ -1,0 +1,33 @@
+<app-bhome></app-bhome>
+<div class="container jumbotron pt-md-5">
+
+  <a routerLink="/portrait/ajout" class="btn btn-action">Ajouter portrait</a>
+
+  <table class="table table-bordered" >
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">nom</th>
+      <th scope="col">poste</th>
+      <!--<th scope="col">description</th>-->
+      <th scope="col">date</th>
+      <th scope="col">image</th>
+      <th scope="col">action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let portrait of portraits">
+      <th scope="row">{{portrait.id}}</th>
+      <td>{{portrait.nom}}</td>
+      <td>{{portrait.poste}}</td>
+     <!-- <td [innerHtml] = "portrait.description"></td>-->
+      <td>{{portrait.dateAjout |  date:'d/M/y HH:MM'}}</td>
+      <td><img [src]="Url + portrait.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
+      <td>
+        <button class="btn btn-danger" (click)="onDelete(portrait)">supprimer</button>
+        <a class="btn btn-success" [routerLink]="['/portrait/edit' , portrait.id]">modifier</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

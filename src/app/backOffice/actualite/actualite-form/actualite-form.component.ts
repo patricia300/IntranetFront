@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActualiteService } from 'src/app/service/actualite.service';
 import { Actualite } from 'src/app/model/actualite';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 const API_URL = 'http://localhost:8000/api/actualites';
 

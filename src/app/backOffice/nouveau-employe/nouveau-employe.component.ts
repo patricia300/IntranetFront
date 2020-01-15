@@ -19,35 +19,22 @@ export class NouveauEmployeComponent implements OnInit, OnDestroy {
   imagesSubscription = new Subscription();
   Url = 'http://localhost:8000';
 
-  constructor(private nouveauEmployeService: NouveauEmployeService,
-              private mediaObjectService: MediaObjectService) { }
-
+  constructor(private nouveauEmployeService: NouveauEmployeService) { }
 
   ngOnInit() {
-
     this.nouveauemployeSubscription = this.nouveauEmployeService.NouveauemployeSubject.subscribe(
       (nouveauemployes: NouveauEmploye[]) => {
         this.nouveauEmployes = nouveauemployes;
       }
     );
-
-    this.imagesSubscription = this.mediaObjectService.imagesSubject.subscribe(
-      (responses:MediaObject[]) => {
-        this.images = responses;
-      }
-    );
-    this.mediaObjectService.emitImages();
     this.nouveauEmployeService.emitNouveauEmploye();
   }
 
   onDelete(nouveau : NouveauEmploye){
-    console.log(nouveau);
     this.nouveauEmployeService.deleteNouveauEmploye(nouveau);
   }
 
   ngOnDestroy(): void {
-    
     this.nouveauemployeSubscription.unsubscribe();
-    this.imagesSubscription.unsubscribe();
   }
 }

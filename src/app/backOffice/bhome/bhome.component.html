@@ -21,14 +21,17 @@
   <div id="mySidenav" class="sidenav unique-color " [ngStyle]="{'width': width}">
     <i class="fas fa-times closebtn" (click)="onCloseNav()" style="color: white"></i>  
     <ul class="navbar-nav mr-auto mt-lg-5">
-      <li class="nav-item">
+      <li class="nav-item"  routerLinkActive="active">
         <a class="nav-link" routerLink="">Acceuil</a>
      </li>
-     <li class="nav-item">
+     <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/actualiteB">actualite</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/nouveau">NouveauEmploye</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/portrait">Portrait</a>
       </li>
     </ul>
   </div>

@@ -2,8 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Actualite} from '../../model/actualite';
 import {Subscription} from 'rxjs';
 import {ActualiteService} from '../../service/actualite.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actualite',
@@ -13,7 +11,6 @@ import { Router } from '@angular/router';
 export class ActualiteComponent implements OnInit, OnDestroy {
   actualites: Actualite[];
   actualiteSubscription: Subscription;
-  actualiteForm: FormGroup;
  
   actualite: Actualite;
   constructor(private actualiteService: ActualiteService) {}

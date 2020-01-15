@@ -20,7 +20,7 @@
         <td>{{actualite.dateAjout | date:'d/M/y HH:MM'}}</td>
         <td>
           <button class="btn btn-danger" (click)="onDelete(actualite.id)">supprimer</button>
-          <a class="btn btn-success" [routerLink]="['/actualiteModif' , actualite.id]">modifier</a>
+          <a class="btn btn-success" [routerLink]="['/actualite/edit' , actualite.id]">modifier</a>
         </td>
       </tr>
       </tbody>

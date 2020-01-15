@@ -9,6 +9,9 @@ import { ActualiteFormComponent } from './backOffice/actualite/actualite-form/ac
 import { ActualiteModifComponent } from './backOffice/actualite/actualite-modif/actualite-modif.component';
 import { EmployeNewComponent } from './backOffice/nouveau-employe/employe-new/employe-new.component';
 import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modification-nouveau/modification-nouveau.component';
+import { ListeComponent } from './backOffice/portrait/liste/liste.component';
+import { NouveauComponent } from './backOffice/portrait/nouveau/nouveau.component';
+import { EditComponent } from './backOffice/portrait/edit/edit.component';
 
 
 const routes: Routes = [
@@ -18,9 +21,12 @@ const routes: Routes = [
   { path: 'actualiteB', component: ActualiteComponent},
   { path: 'nouveau', component: NouveauEmployeComponent},
   { path: 'actualiteform' , component: ActualiteFormComponent},
-  { path: 'actualiteModif/:id' , component: ActualiteModifComponent},
+  { path: 'actualite/edit/:id' , component: ActualiteModifComponent},
   { path: 'nouveau/ajout' , component: EmployeNewComponent},
-  { path: 'nouveau/edit/:id' , component : ModificationNouveauComponent}
+  { path: 'nouveau/edit/:id' , component : ModificationNouveauComponent},
+  { path: 'portrait' , component : ListeComponent},
+  { path: 'portrait/edit/:id' , component : EditComponent},
+  { path: 'portrait/ajout' , component : NouveauComponent}
 
 ];
 
