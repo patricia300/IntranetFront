@@ -10,6 +10,7 @@ import { Portrait } from 'src/app/model/portrait';
   styleUrls: ['./nouveau.component.css']
 })
 export class NouveauComponent implements OnInit{
+  
   selectedFile = null;
   portraitForm : FormGroup;
   constructor(

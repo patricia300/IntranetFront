@@ -88,7 +88,7 @@ export class PortraitService implements OnDestroy {
     );
   }
 
-  putPortrait(id:number , portrait : Portrait , fd : FormData){
+  putPortrait(id:number , portrait : Portrait , fd : FormData , idImage : number){
     this.http.post(IMAGE_URL, fd).subscribe(
       (response : any) => {
         portrait.image  = '/api/media_objects/' + response.id;
@@ -103,13 +103,26 @@ export class PortraitService implements OnDestroy {
             this.emitPortrait();
           }
       );
+      this.mediaObjectService.deleteImage(idImage)
       },
       (error) => {
         console.log(error);
       }
-    );
-      
+    ); 
   }
+
+  putPortraitSansImage(id:number , portrait : Portrait){
+        this.http.put(API_URL + '/' + id + '.json', portrait).subscribe(
+          (response : Portrait) => {
+            let index = this.portraits.findIndex(d => d.id === id);
+            this.portraits.splice(index , 1);
+            this.portraits.push(response);
+            this.emitPortrait();
+          }
+      );
+  }
+
+
 
   ngOnDestroy(){
     this.mediaSub.unsubscribe();

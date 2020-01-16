@@ -47,24 +47,30 @@ export class ModificationNouveauComponent implements OnInit {
 
   
   onModify(){
-    const fd = new FormData();
-    console.log(this.selectedFile);
-    fd.append('file' , this.selectedFile);
-    console.log(fd);
-
     const nom = this.nouveauEmployeForm.get('nom').value;
     const poste = this.nouveauEmployeForm.get('poste').value;
     const nouveau = new NouveauEmploye(nom , poste);
 
-    this.nouveauService.putNouveau(+this.id , nouveau , fd);
+    if(this.selectedFile != null){
 
-    let i , tmp = '';
-    for(i=19 ; i < this.nouveau.image.length ; i++){
-      tmp = tmp + this.nouveau.image[i];
+      const fd = new FormData();
+      console.log(this.selectedFile);
+      fd.append('file' , this.selectedFile);
+      console.log(fd);
+
+      let i , tmp = '';
+      for(i=19 ; i < this.nouveau.image.length ; i++){
+        tmp = tmp + this.nouveau.image[i];
+      }
+      let idImage = +tmp;
+      console.log(tmp);
+
+      this.nouveauService.putNouveau(+this.id , nouveau , fd , idImage);
     }
-    let idImage = +tmp;
-    console.log(tmp);
-    this.mediaService.deleteImage(idImage);
+    else{
+      this.nouveauService.putNouveauSansImage(this.id, nouveau) ;
+    }
+    
 
     this.router.navigate(['nouveau']);
   }

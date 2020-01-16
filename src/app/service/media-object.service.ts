@@ -38,7 +38,7 @@ export class MediaObjectService {
      this.http.get(GET_URL + id + '.json').subscribe(
       (response: MediaObject) => {
         console.log(response.contentUrl);
-       return this.image.contentUrl = response.contentUrl;
+         return this.image.contentUrl = response.contentUrl;
       },
       (erreur) => {
         console.log(erreur);

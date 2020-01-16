@@ -87,7 +87,7 @@ export class NouveauEmployeService {
     );
   }
 
-  putNouveau(id:number , nouveau : NouveauEmploye , fd : FormData){
+  putNouveau(id:number , nouveau : NouveauEmploye , fd : FormData , idImage : number){
     this.http.post(IMAGE_URL, fd).subscribe(
       (response : any) => {
         nouveau.image  = '/api/media_objects/' + response.id;
@@ -102,12 +102,26 @@ export class NouveauEmployeService {
             this.emitNouveauEmploye();
           }
       );
+      this.mediaObjectService.deleteImage(idImage);
       },
       (error) => {
         console.log(error);
       }
-    );
-      
+     
+    );   
+  }
+  putNouveauSansImage(id:number , nouveau : NouveauEmploye){
+        this.http.put(API_URL + '/' + id + '.json', nouveau).subscribe(
+          (response : NouveauEmploye) => {
+            let index = this.nouveauEmployes.findIndex(d => d.id === id);
+            this.nouveauEmployes.splice(index , 1);
+            this.nouveauEmployes.push(response);
+            this.emitNouveauEmploye();
+          },
+          (error) => {
+            console.log(error);
+          }
+      );
   }
 
 }

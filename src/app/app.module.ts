@@ -27,6 +27,9 @@ import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modif
 import { ListeComponent } from './backOffice/portrait/liste/liste.component';
 import { NouveauComponent } from './backOffice/portrait/nouveau/nouveau.component';
 import { EditComponent } from './backOffice/portrait/edit/edit.component';
+import { ListeAnnonceComponent } from './backOffice/annonce/liste-annonce/liste-annonce.component';
+import { AjoutAnnonceComponent } from './backOffice/annonce/ajout-annonce/ajout-annonce.component';
+import { EditAnnonceComponent } from './backOffice/annonce/edit-annonce/edit-annonce.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { EditComponent } from './backOffice/portrait/edit/edit.component';
     ListeComponent,
     NouveauComponent,
     EditComponent,
+    ListeAnnonceComponent,
+    AjoutAnnonceComponent,
+    EditAnnonceComponent,
    
   ],
   imports: [
