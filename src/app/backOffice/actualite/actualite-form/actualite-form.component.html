@@ -1,10 +1,11 @@
 <app-bhome></app-bhome>
-<div class="container pt-md-5" *ngIf="actualite == null">
+<div class="container jumbotron pt-md-5">
     <form [formGroup]="actualiteForm" (ngSubmit)="onSave()">
       <div class="form-group shadow-textarea">
         <label>Titre</label>
         <input class="form-control z-depth-1" formControlName="titre"/>
       </div>
+      <input class="form-control z-depth-1 col-md-5" type="file" (change)="onFileSelected($event)" />
       <div class="form-group shadow-textarea">
         <label>Description</label>
         <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>

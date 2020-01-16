@@ -9,6 +9,7 @@
         <th scope="col">titre</th>
         <th scope="col">description</th>
         <th scope="col">date</th>
+        <th scope="col">image</th>
         <th scope="col">action</th>
       </tr>
       </thead>
@@ -18,8 +19,9 @@
         <td>{{actualite.titre}}</td>
         <td [innerHTML]="actualite.description"></td>
         <td>{{actualite.dateAjout | date:'d/M/y HH:MM'}}</td>
+        <td><img [src]="Url + actualite.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
         <td>
-          <button class="btn btn-danger" (click)="onDelete(actualite.id)">supprimer</button>
+          <button class="btn btn-danger" (click)="onDelete(actualite)">supprimer</button>
           <a class="btn btn-success" [routerLink]="['/actualite/edit' , actualite.id]">modifier</a>
         </td>
       </tr>

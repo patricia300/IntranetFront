@@ -38,6 +38,7 @@ export class AnnonceService {
   }
 
   postAnnonce(annonce: Annonce) {
+    console.log(annonce);
     return this.http.post(API_URL + '.json', annonce).subscribe(
       (response: Annonce) => {
         this.annonces.push(response);
@@ -76,4 +77,6 @@ export class AnnonceService {
       }
     );
   }
+
+  
 }

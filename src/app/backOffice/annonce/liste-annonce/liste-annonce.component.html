@@ -1,1 +1,28 @@
-<p>liste-annonce works!</p>
+<app-bhome></app-bhome>
+  <div class="container jumbotron pt-md-5">
+    <a routerLink="/annonce/ajout" class ="btn btn-primary">Ajouter une Annonce</a>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">titre</th>
+        <th scope="col">description</th>
+        <th scope="col">date</th>
+        <th scope="col">action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let annonce of annonces">
+        <th scope="row">{{annonce.id}}</th>
+        <td>{{annonce.titre}}</td>
+        <td [innerHTML]="annonce.description"></td>
+        <td>{{annonce.dateAjout | date:'d/M/y HH:MM'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(annonce.id)">supprimer</button>
+          <a class="btn btn-success" [routerLink]="['/annonce/edit' , annonce.id]">modifier</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+   </div>
+  

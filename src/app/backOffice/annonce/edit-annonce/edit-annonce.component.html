@@ -1,1 +1,21 @@
-<p>edit-annonce works!</p>
+<div class="container pt-md-5">
+    <form [formGroup]="modificationForm" (ngSubmit)="onModify()">
+      <div class="form-group shadow-textarea">
+        <label>id</label>
+        <input class="form-control z-depth-1" value="{{annonce.id}}" readonly formControlName="id"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Titre</label>
+        <input class="form-control z-depth-1" formControlName="titre" value="{{annonce.titre}}"/>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>Description</label>
+        <ejs-richtexteditor formControlName="description" value="{{annonce.description}}"></ejs-richtexteditor>
+      </div>
+      <div class="form-group shadow-textarea">
+        <label>dateAjout</label>
+        <input class="form-control z-depth-1" type="datetime" formControlName="dateAjout" placeholder="{{annonce.dateAjout | date:'d/M/y HH:MM'}}"/>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
+    </form>
+  </div>

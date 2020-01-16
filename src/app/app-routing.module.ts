@@ -12,6 +12,9 @@ import { ModificationNouveauComponent } from './backOffice/nouveau-employe/modif
 import { ListeComponent } from './backOffice/portrait/liste/liste.component';
 import { NouveauComponent } from './backOffice/portrait/nouveau/nouveau.component';
 import { EditComponent } from './backOffice/portrait/edit/edit.component';
+import { ListeAnnonceComponent } from './backOffice/annonce/liste-annonce/liste-annonce.component';
+import { EditAnnonceComponent } from './backOffice/annonce/edit-annonce/edit-annonce.component';
+import { AjoutAnnonceComponent } from './backOffice/annonce/ajout-annonce/ajout-annonce.component';
 
 
 const routes: Routes = [
@@ -26,8 +29,10 @@ const routes: Routes = [
   { path: 'nouveau/edit/:id' , component : ModificationNouveauComponent},
   { path: 'portrait' , component : ListeComponent},
   { path: 'portrait/edit/:id' , component : EditComponent},
-  { path: 'portrait/ajout' , component : NouveauComponent}
-
+  { path: 'portrait/ajout' , component : NouveauComponent},
+  { path: 'annonce' , component : ListeAnnonceComponent},
+  { path: 'annonce/edit/:id' , component : EditAnnonceComponent},
+  { path: 'annonce/ajout' , component : AjoutAnnonceComponent}
 ];
 
 @NgModule({

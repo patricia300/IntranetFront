@@ -4,10 +4,19 @@
         <label>id</label>
         <input class="form-control z-depth-1" value="{{actualite.id}}" readonly formControlName="id"/>
       </div>
-      <div class="form-group shadow-textarea">
-        <label>Titre</label>
-        <input class="form-control z-depth-1" formControlName="titre" value="{{actualite.titre}}"/>
+      <div class="row">
+        <div class="col-md-3">
+          <img [src]="Url + actualite.contentUrl" class="" alt="">
+        </div>
+        <div class="col-md-8">
+          <input class="form-control z-depth-1" type="file" (change)="onFileSelected($event)" />
+          <div class="form-group shadow-textarea">
+            <label>Titre</label>
+            <input class="form-control z-depth-1" formControlName="titre" value="{{actualite.titre}}"/>
+          </div>
+        </div>
       </div>
+    
       <div class="form-group shadow-textarea">
         <label>Description</label>
         <ejs-richtexteditor formControlName="description" value="{{actualite.description}}"></ejs-richtexteditor>

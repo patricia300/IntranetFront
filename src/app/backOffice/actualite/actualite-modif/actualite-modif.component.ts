@@ -13,7 +13,8 @@ export class ActualiteModifComponent implements OnInit {
   
   modificationForm: FormGroup;
   actualite : Actualite;
-  
+  Url = 'http://localhost:8000';
+  selectedFile = null;
   id;
 
   constructor(private formBuilder: FormBuilder , 
@@ -35,18 +36,40 @@ export class ActualiteModifComponent implements OnInit {
         titre: [this.actualite.titre, Validators.required],
         description: [this.actualite.description, Validators.required],
         dateAjout : [this.actualite.dateAjout, Validators.required]
-      });
-    
-}
+      });   
+  }
+
+  
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
 
   onModify() {
     const titre = this.modificationForm.get('titre').value;
     const description = this.modificationForm.get('description').value;
     const dateAjout = this.modificationForm.get('dateAjout').value;
     const actualite = new Actualite(titre, description, dateAjout);
-    this.actualiteService.patchActualite(+this.id, actualite);
+
+    if(this.selectedFile != null){
+      const fd = new FormData();
+      console.log(this.selectedFile);
+      fd.append('file' , this.selectedFile);
+      console.log(fd);
+
+      let i , tmp = '';
+      for(i=19 ; i < this.actualite.image.length ; i++){
+        tmp = tmp + this.actualite.image[i];
+      }
+      let idImage = +tmp;
+      console.log(tmp);
+
+      this.actualiteService.patchActualite(+this.id, actualite,fd,idImage);
+    }
+    else{
+      this.actualiteService.patchActualiteSansImage(+this.id,actualite)
+    }
     this.router.navigate(['actualiteB']);
-    this.actualite = null;
   }
 
 }

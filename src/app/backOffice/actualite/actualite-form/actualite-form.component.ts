@@ -4,14 +4,13 @@ import { ActualiteService } from 'src/app/service/actualite.service';
 import { Actualite } from 'src/app/model/actualite';
 import { Router } from '@angular/router';
 
-const API_URL = 'http://localhost:8000/api/actualites';
-
 @Component({
   selector: 'app-actualite-form',
   templateUrl: './actualite-form.component.html',
   styleUrls: ['./actualite-form.component.css']
 })
 export class ActualiteFormComponent implements OnInit {
+  selectedFile = null;
   actualiteForm: FormGroup;
 
   constructor(private actualiteService: ActualiteService ,
@@ -29,12 +28,24 @@ export class ActualiteFormComponent implements OnInit {
       });
   }
 
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
+
   onSave() {
+    const fd = new FormData();
+    console.log(this.selectedFile);
+    fd.append('file' , this.selectedFile);
+    console.log(fd);
+
     const titre = this.actualiteForm.get('titre').value;
     const description = this.actualiteForm.get('description').value;
     const dateAjout = new Date();
+    
     const actualite = new Actualite(titre, description, dateAjout);
-    this.actualiteService.postActualite(actualite);
+    this.actualiteService.postActualite(actualite , fd);
     this.router.navigate(['actualiteB']);
   }
 

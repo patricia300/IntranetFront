@@ -39,7 +39,6 @@ export class NouveauEmployeService {
 
   getNouveau(id : number){
       let index = this.nouveauEmployes.findIndex(d => d.id === id);
-      console.log(index);
       return this.nouveauEmployes[index];
   }
   
@@ -90,16 +89,22 @@ export class NouveauEmployeService {
   putNouveau(id:number , nouveau : NouveauEmploye , fd : FormData , idImage : number){
     this.http.post(IMAGE_URL, fd).subscribe(
       (response : any) => {
+
         nouveau.image  = '/api/media_objects/' + response.id;
         nouveau.contentUrl = response.contentUrl;
+        
         this.mediaObject.push(response);
         this.mediaObjectService.emitImages();
+
         this.http.put(API_URL + '/' + id + '.json', nouveau).subscribe(
           (response : NouveauEmploye) => {
             let index = this.nouveauEmployes.findIndex(d => d.id === id);
             this.nouveauEmployes.splice(index , 1);
             this.nouveauEmployes.push(response);
             this.emitNouveauEmploye();
+          },
+          (error) => {
+            console.log(error);
           }
       );
       this.mediaObjectService.deleteImage(idImage);

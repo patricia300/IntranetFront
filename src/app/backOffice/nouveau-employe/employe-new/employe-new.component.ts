@@ -44,7 +44,6 @@ export class EmployeNewComponent implements OnInit {
     let poste = this.nouveauEmployeForm.get('poste').value;
     
     let nouveauEmploye = new NouveauEmploye(nom, poste);
-    console.log(nouveauEmploye);
     this.nouveauEmployeService.postNouveauEmploye(nouveauEmploye , fd);
     this.router.navigate(['nouveau']);
   }

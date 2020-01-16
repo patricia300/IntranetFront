@@ -11,8 +11,9 @@ import {ActualiteService} from '../../service/actualite.service';
 export class ActualiteComponent implements OnInit, OnDestroy {
   actualites: Actualite[];
   actualiteSubscription: Subscription;
- 
+  Url = 'http://localhost:8000';
   actualite: Actualite;
+  
   constructor(private actualiteService: ActualiteService) {}
 
   ngOnInit() {
@@ -24,8 +25,8 @@ export class ActualiteComponent implements OnInit, OnDestroy {
     this.actualiteService.emitActualites();
   }
 
-  onDelete(id: number) {
-    this.actualiteService.deleteActualite(id);
+  onDelete(actualite : Actualite) {
+    this.actualiteService.deleteActualite(actualite);
   }
 
   ngOnDestroy(): void {
