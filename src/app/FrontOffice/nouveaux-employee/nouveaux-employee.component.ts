@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NouveauEmploye } from 'src/app/model/nouveau-employe';
+import { Subscription } from 'rxjs';
+import { NouveauEmployeService } from 'src/app/service/nouveau-employe.service';
 
 @Component({
   selector: 'app-nouveaux-employee',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nouveaux-employee.component.css']
 })
 export class NouveauxEmployeeComponent implements OnInit {
-
-  constructor() { }
+  nouveaux : NouveauEmploye[];
+  nouveauSub : Subscription;
+  Url = 'http://localhost:8000'
+  constructor(private nouveauService : NouveauEmployeService) { }
 
   ngOnInit() {
+    this.nouveauSub = this.nouveauService.NouveauemployeSubject.subscribe(
+      (response : NouveauEmploye[]) => {
+        this.nouveaux = response;
+      }
+    );
+    this.nouveauService.getNouveauemployes();
   }
 
 }

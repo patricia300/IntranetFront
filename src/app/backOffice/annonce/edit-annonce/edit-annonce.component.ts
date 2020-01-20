@@ -33,7 +33,7 @@ export class EditAnnonceComponent implements OnInit {
       id : [this.annonce.id, Validators.required],
       titre: [this.annonce.titre, Validators.required],
       description: [this.annonce.description, Validators.required],
-      dateAjout : [this.annonce.dateAjout, Validators.required]
+      dateAjout : ['', Validators.required]
     });   
 }
 

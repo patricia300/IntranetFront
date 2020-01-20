@@ -35,7 +35,7 @@ export class ActualiteModifComponent implements OnInit {
         id : [this.actualite.id, Validators.required],
         titre: [this.actualite.titre, Validators.required],
         description: [this.actualite.description, Validators.required],
-        dateAjout : [this.actualite.dateAjout, Validators.required]
+        dateAjout : ['', Validators.required]
       });   
   }
 

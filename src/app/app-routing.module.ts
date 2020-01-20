@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AcceuilComponent } from './FrontOffice/acceuil/acceuil.component';
 import { ListeActualiteComponent } from './FrontOffice/liste-actualite/liste-actualite.component';
-import { ListeGroupeTalysComponent } from './FrontOffice/liste-groupe-talys/liste-groupe-talys.component';
 import { ActualiteComponent } from './backOffice/actualite/actualite.component';
 import { NouveauEmployeComponent } from './backOffice/nouveau-employe/nouveau-employe.component';
 import { ActualiteFormComponent } from './backOffice/actualite/actualite-form/actualite-form.component';
@@ -18,7 +17,6 @@ import { AjoutAnnonceComponent } from './backOffice/annonce/ajout-annonce/ajout-
 
 
 const routes: Routes = [
-  { path : 'groupeTalys' , component : ListeGroupeTalysComponent },
   { path : 'actualite' , component : ListeActualiteComponent },
   { path : '' , component : AcceuilComponent},
   { path: 'actualiteB', component: ActualiteComponent},

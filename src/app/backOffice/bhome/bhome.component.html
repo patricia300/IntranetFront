@@ -1,40 +1,33 @@
-<!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color">
-  <i *ngIf="!navStatut" (click)="onOpenNav()" class="fas fa-bars mr-3" style="color: white"></i>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-      aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-      <ul class="navbar-nav ml-auto">
-        <form class="form-inline">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            </div>
-            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
-          </form>
-      </ul>
+<html lang="en" class="full-height">
+<!--Main Navigation-->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark unique-color mb-lg-5">
+    <div class="container">
+      <a class="navbar-brand" href="#"><strong>Intranet</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"  routerLinkActive="active">
+            <a class="nav-link" routerLink="">Acceuil</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/annonce">annonce</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/actualiteB">actualite</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/nouveau">NouveauEmploye</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/portrait">Portrait</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-  <!--/.Navbar -->
-
-  <div id="mySidenav" class="sidenav unique-color " [ngStyle]="{'width': width}">
-    <i class="fas fa-times closebtn" (click)="onCloseNav()" style="color: white"></i>  
-    <ul class="navbar-nav mr-auto mt-lg-5">
-      <li class="nav-item"  routerLinkActive="active">
-        <a class="nav-link" routerLink="">Acceuil</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/annonce">annonce</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/actualiteB">actualite</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/nouveau">NouveauEmploye</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/portrait">Portrait</a>
-      </li>
-    </ul>
-  </div>
+</header>
+<!--Main Navigation-->

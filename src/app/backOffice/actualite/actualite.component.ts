@@ -22,7 +22,7 @@ export class ActualiteComponent implements OnInit, OnDestroy {
         this.actualites = actualites;
       }
     );
-    this.actualiteService.emitActualites();
+    this.actualiteService.getActualites();
   }
 
   onDelete(actualite : Actualite) {

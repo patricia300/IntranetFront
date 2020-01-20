@@ -1,5 +1,6 @@
 <app-bhome></app-bhome>
-<div class="container jumbotron pt-md-5" >
+<div class="container jumbotron" >
+  <h2>Formulaire d'ajout de l'annonce</h2>
     <form [formGroup]="annonceForm" (ngSubmit)="onSave()">
       <div class="form-group shadow-textarea">
         <label>Titre</label>
@@ -9,6 +10,7 @@
         <label>Description</label>
         <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="annonceForm.invalid">Ajouter</button>
+      <a class="btn btn btn-outline-info" routerLink="/annonce">annuler</a>
+      <button class="btn btn-outline-primary" type="submit" [disabled]="annonceForm.invalid">Ajouter</button>
     </form>
   </div>

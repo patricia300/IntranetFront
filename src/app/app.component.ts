@@ -8,15 +8,9 @@ import { SideNavService } from './service/side-nav.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  ml: string;
-  mlSubscription: Subscription;
-  constructor(private appService:SideNavService){}
+ 
+  constructor(){}
   ngOnInit(): void {
-    this.mlSubscription = this.appService.mlSubject.subscribe(
-      (ml) => {
-        this.ml = ml;
-      }
-    );
   }
 
 }

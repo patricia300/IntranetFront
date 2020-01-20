@@ -1,5 +1,6 @@
-
-<div class=" jumbotron container pt-md-5">
+<app-bhome></app-bhome>
+<div class=" jumbotron container">
+  <h2>Formulaire d'ajout du portrait du mois</h2>
     <form [formGroup]="portraitForm" (ngSubmit)="onSave()">
       <div class="form-group shadow-textarea">
         <label>Nom</label>
@@ -9,11 +10,21 @@
         <label>poste</label>
         <input class="form-control z-depth-1" formControlName="poste"/>
       </div>
-      <input class="form-control z-depth-1 col-md-5" type="file" (change)="onFileSelected($event)" />
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileSelected($event)"
+            aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choisir une image</label>
+        </div>
+      </div>
       <div class="form-group shadow-textarea">
         <label>Description</label>
         <ejs-richtexteditor formControlName="description"></ejs-richtexteditor>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="portraitForm.invalid">Ajouter</button>
+      <a class="btn btn-outline-info" routerLink="/portrait">annuler</a>
+      <button class="btn btn-outline-primary" type="submit" [disabled]="portraitForm.invalid">Ajouter</button>
     </form>
   </div>

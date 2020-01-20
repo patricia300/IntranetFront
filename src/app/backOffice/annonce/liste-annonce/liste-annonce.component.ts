@@ -11,7 +11,9 @@ import { AnnonceService } from 'src/app/service/annonce.service';
 export class ListeAnnonceComponent implements OnInit,OnDestroy {
   annonces : Annonce[];
   annonceSubscription : Subscription;
-  constructor(private annonceService : AnnonceService) { }
+  constructor(private annonceService : AnnonceService) {
+    this.annonceService.getAnnonces();
+   }
 
   ngOnInit() {
     this.annonceSubscription = this.annonceService.annonceSubject.subscribe(
@@ -19,7 +21,7 @@ export class ListeAnnonceComponent implements OnInit,OnDestroy {
         this.annonces = annonces;
       }
     );
-    this.annonceService.emitAnnonces();
+    this.annonceService.getAnnonces();
   }
 
   onDelete(id:number){

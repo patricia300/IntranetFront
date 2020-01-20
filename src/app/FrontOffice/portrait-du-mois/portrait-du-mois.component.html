@@ -1,27 +1,63 @@
-<!-- Jumbotron -->
-<div class="jumbotron text-center">
-
-    <!-- Title -->
-    <h4 class="card-title h4 pb-2"><strong>My adventure</strong></h4>
-  
-    <!-- Card image -->
-    <div class="view overlay my-4">
-      <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="img-fluid" alt="">
-      <a href="#">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-  
-    <h5 class="indigo-text h5 mb-4">Photography</h5>
-  
-    <p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-  
-    <!-- Linkedin -->
-    <a class="fa-lg p-2 m-2 li-ic"><i class="fab fa-linkedin-in grey-text"></i></a>
-    <!-- Twitter -->
-    <a class="fa-lg p-2 m-2 tw-ic"><i class="fab fa-twitter grey-text"></i></a>
-    <!-- Dribbble -->
-    <a class="fa-lg p-2 m-2 fb-ic"><i class="fab fa-facebook-f grey-text"></i></a>
-  
+<h1 class="h1">Portrait du mois</h1>
+<div *ngIf="!portraits" class="d-flex">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
-  <!-- Jumbotron -->
+</div>
+<!--Carousel Wrapper-->
+<div *ngIf="portraits" id="carousel-example-3z" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-3z" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-3z" data-slide-to="1"></li>
+    <li data-target="#carousel-example-3z" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <!--First slide-->
+    <div *ngFor="let portrait of portraits;let i = index" [ngClass]="{'carousel-item': true , 'active' : i === 0}">
+      <!-- Jumbotron -->
+<div class="jumbotron text-center portrait">
+
+  <!-- Title -->
+  <h4 class="card-title h4 pb-2"><strong>{{portrait.nom | uppercase}} | {{portrait.poste}}</strong></h4>
+
+  <!-- Card image -->
+  <div class="view overlay my-4">
+    <img [src] = "Url + portrait.contentUrl" class="img-fluid" alt="">
+    <a href="#">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <h5 class="indigo-text h5 mb-4"></h5>
+
+  <p class="card-text" [innerHTML] = "portrait.description"></p>
+
+  <!-- Linkedin -->
+  <a class="fa-lg p-2 m-2 li-ic"><i class="fab fa-linkedin-in grey-text"></i></a>
+  <!-- Twitter -->
+  <a class="fa-lg p-2 m-2 tw-ic"><i class="fab fa-twitter grey-text"></i></a>
+  <!-- Dribbble -->
+  <a class="fa-lg p-2 m-2 fb-ic"><i class="fab fa-facebook-f grey-text"></i></a>
+
+</div>
+<!-- Jumbotron -->
+
+    </div>
+    <!--/First slide-->
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-3z" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-3z" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->

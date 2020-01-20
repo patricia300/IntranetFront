@@ -21,7 +21,7 @@ export class ListeComponent implements OnInit , OnDestroy {
         this.portraits = portraits;
       }
     );
-    this.portraitService.emitPortrait();
+    this.portraitService.getPortraits();
   }
 
   onDelete(portrait : Portrait){

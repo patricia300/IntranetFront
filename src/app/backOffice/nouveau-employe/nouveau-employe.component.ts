@@ -27,7 +27,7 @@ export class NouveauEmployeComponent implements OnInit, OnDestroy {
         this.nouveauEmployes = nouveauemployes;
       }
     );
-    this.nouveauEmployeService.emitNouveauEmploye();
+    this.nouveauEmployeService.getNouveauemployes();
   }
 
   onDelete(nouveau : NouveauEmploye){

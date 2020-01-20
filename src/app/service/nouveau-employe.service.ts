@@ -52,7 +52,7 @@ export class NouveauEmployeService {
         this.http.post(API_URL + '.json', nouveauEmploye).subscribe(
            (responseN: NouveauEmploye) => {
              this.nouveauEmployes.push(responseN);
-             this.emitNouveauEmploye();
+             console.log(responseN);
            },
            (error: Error) => {
              console.log(error);
@@ -98,10 +98,7 @@ export class NouveauEmployeService {
 
         this.http.put(API_URL + '/' + id + '.json', nouveau).subscribe(
           (response : NouveauEmploye) => {
-            let index = this.nouveauEmployes.findIndex(d => d.id === id);
-            this.nouveauEmployes.splice(index , 1);
-            this.nouveauEmployes.push(response);
-            this.emitNouveauEmploye();
+           console.log(response);
           },
           (error) => {
             console.log(error);
@@ -118,10 +115,7 @@ export class NouveauEmployeService {
   putNouveauSansImage(id:number , nouveau : NouveauEmploye){
         this.http.put(API_URL + '/' + id + '.json', nouveau).subscribe(
           (response : NouveauEmploye) => {
-            let index = this.nouveauEmployes.findIndex(d => d.id === id);
-            this.nouveauEmployes.splice(index , 1);
-            this.nouveauEmployes.push(response);
-            this.emitNouveauEmploye();
+           console.log(response);
           },
           (error) => {
             console.log(error);

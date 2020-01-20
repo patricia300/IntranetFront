@@ -1,15 +1,19 @@
 <app-bhome></app-bhome>
-<div class="container jumbotron pt-md-5">
-
+<div class="jumbotron">
+  <h2 class="h2 text-center"> Les portraits du mois</h2>
   <a routerLink="/portrait/ajout" class="btn btn-action">Ajouter portrait</a>
-
-  <table class="table table-bordered" >
+  <div *ngIf="!portraits" class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <table *ngIf="portraits" class="table table-bordered">
     <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">nom</th>
       <th scope="col">poste</th>
-      <!--<th scope="col">description</th>-->
+      <th scope="col">description</th>
       <th scope="col">date</th>
       <th scope="col">image</th>
       <th scope="col">action</th>
@@ -20,12 +24,12 @@
       <th scope="row">{{portrait.id}}</th>
       <td>{{portrait.nom}}</td>
       <td>{{portrait.poste}}</td>
-     <!-- <td [innerHtml] = "portrait.description"></td>-->
+      <td [innerHtml] = "portrait.description" width ="800vh"></td>
       <td>{{portrait.dateAjout |  date:'d/M/y HH:MM'}}</td>
       <td><img [src]="Url + portrait.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
       <td>
-        <button class="btn btn-danger" (click)="onDelete(portrait)">supprimer</button>
-        <a class="btn btn-success" [routerLink]="['/portrait/edit' , portrait.id]">modifier</a>
+        <button class="btn btn-outline-danger btn-sm" (click)="onDelete(portrait)"><i class="far fa-trash-alt"></i></button>
+        <a class="btn btn-outline-success btn-sm" [routerLink]="['/portrait/edit' , portrait.id]"><i class="fas fa-pencil-alt"></i></a>
       </td>
     </tr>
     </tbody>

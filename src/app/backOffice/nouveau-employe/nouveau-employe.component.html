@@ -1,8 +1,13 @@
 <app-bhome></app-bhome>
-<div class="container jumbotron pt-md-5">
-
+<div class="jumbotron">
+  <h2 class="h2 text-center"> Les nouveaux employés</h2>
   <a routerLink="/nouveau/ajout" class="btn btn-action">Ajouter nouveau employé</a>
 
+  <div *ngIf="!nouveauEmployes" class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <table class="table table-bordered" *ngIf="nouveauEmployes">
     <thead>
     <tr>
@@ -20,8 +25,8 @@
       <td>{{nouveau.poste}}</td>
       <td><img [src]="Url + nouveau.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
       <td>
-        <button class="btn btn-danger" (click)="onDelete(nouveau)">supprimer</button>
-        <a class="btn btn-success" [routerLink]="['/nouveau/edit' , nouveau.id]">modifier</a>
+        <button class="btn btn-outline-danger btn-sm" (click)="onDelete(nouveau)"><i class="far fa-trash-alt"></i></button>
+        <a class="btn btn-outline-success btn-sm" [routerLink]="['/nouveau/edit' , nouveau.id]"><i class="fas fa-pencil-alt"></i></a>
       </td>
     </tr>
     </tbody>

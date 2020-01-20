@@ -1,30 +1,42 @@
-<div class="container pt-md-5">
+<app-bhome></app-bhome>
+<div class="container jumbotron">
+  <h2>Formulaire de modification de l'actualité</h2>
     <form [formGroup]="modificationForm" (ngSubmit)="onModify()">
-      <div class="form-group shadow-textarea">
-        <label>id</label>
-        <input class="form-control z-depth-1" value="{{actualite.id}}" readonly formControlName="id"/>
-      </div>
       <div class="row">
         <div class="col-md-3">
           <img [src]="Url + actualite.contentUrl" class="" alt="">
         </div>
         <div class="col-md-8">
-          <input class="form-control z-depth-1" type="file" (change)="onFileSelected($event)" />
+          <div class="form-group shadow-textarea">
+            <label>id</label>
+            <input class="form-control z-depth-1" value="{{actualite.id}}" readonly formControlName="id"/>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileSelected($event)"
+                aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Choisir une image</label>
+            </div>
+          </div>
           <div class="form-group shadow-textarea">
             <label>Titre</label>
             <input class="form-control z-depth-1" formControlName="titre" value="{{actualite.titre}}"/>
           </div>
+          <div class="form-group shadow-textarea">
+            <label>date Ajout : {{actualite.dateAjout | date:'d/M/y HH:MM'}} </label>
+            <input class="form-control z-depth-1" type="datetime-local" formControlName="dateAjout"/>
+          </div>
         </div>
       </div>
     
-      <div class="form-group shadow-textarea">
+      <div class="form-group shadow-textarea pt-3">
         <label>Description</label>
         <ejs-richtexteditor formControlName="description" value="{{actualite.description}}"></ejs-richtexteditor>
       </div>
-      <div class="form-group shadow-textarea">
-        <label>dateAjout</label>
-        <input class="form-control z-depth-1" type="datetime" formControlName="dateAjout" placeholder="{{actualite.dateAjout | date:'d/M/y HH:MM'}}"/>
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
+      <a class="btn btn-outline-info" routerLink="/actualiteB">Annuler</a>
+      <button class="btn btn-outline-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
     </form>
   </div>

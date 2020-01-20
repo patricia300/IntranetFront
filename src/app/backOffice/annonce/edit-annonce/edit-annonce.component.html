@@ -1,4 +1,6 @@
-<div class="container pt-md-5">
+<app-bhome></app-bhome>
+<div class="container jumbotron">
+  <h2>Formulaire de modification de l'annonce</h2>
     <form [formGroup]="modificationForm" (ngSubmit)="onModify()">
       <div class="form-group shadow-textarea">
         <label>id</label>
@@ -13,9 +15,10 @@
         <ejs-richtexteditor formControlName="description" value="{{annonce.description}}"></ejs-richtexteditor>
       </div>
       <div class="form-group shadow-textarea">
-        <label>dateAjout</label>
-        <input class="form-control z-depth-1" type="datetime" formControlName="dateAjout" placeholder="{{annonce.dateAjout | date:'d/M/y HH:MM'}}"/>
+        <label>date Ajout : {{annonce.dateAjout | date:'d/M/y HH:MM'}}</label>
+        <input class="form-control z-depth-1" type="datetime-local" formControlName="dateAjout"/>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
+      <a class="btn btn btn-outline-info" routerLink="/annonce">annuler</a>
+      <button class="btn btn-outline-primary" type="submit" [disabled]="modificationForm.invalid">modifier</button>
     </form>
   </div>

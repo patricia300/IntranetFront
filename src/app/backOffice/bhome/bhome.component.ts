@@ -7,25 +7,9 @@ import { SideNavService } from 'src/app/service/side-nav.service';
   styleUrls: ['./bhome.component.css']
 })
 export class BHomeComponent implements OnInit {
-  width: string;
-  navStatut;
   
-  constructor(private appService: SideNavService) {
-    this.width = '250px';
-    this.navStatut = true;
-   }
+  constructor() {}
 
   ngOnInit() {}
 
-  onOpenNav() {
-    this.width = '250px';
-    this.appService.onOpenNav();
-    this.navStatut = true;
-  }
-
-  onCloseNav() {
-    this.width = '0px';
-    this.appService.onCloseNav();
-    this.navStatut = false;
-  }
 }

@@ -95,10 +95,7 @@ export class ActualiteService {
 
         this.http.put(API_URL + '/' + id + '.json', actualite).subscribe(
           (response: Actualite) => {
-            const index = this.actualites.findIndex(d => d.id === id);
-            this.actualites.splice(index , 1);
-            this.actualites.push(response);
-            this.emitActualites();
+              console.log(response);
           },
           (error) => {
             console.log(error);
@@ -116,10 +113,7 @@ export class ActualiteService {
   patchActualiteSansImage(id: number, actualite: Actualite) {
     return this.http.put(API_URL + '/' + id + '.json', actualite).subscribe(
       (response: Actualite) => {
-        const index = this.actualites.findIndex(d => d.id === id);
-        this.actualites.splice(index , 1);
-        this.actualites.push(response);
-        this.emitActualites();
+        console.log(response);
       },
       (error) => {
         console.log(error);

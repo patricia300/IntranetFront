@@ -42,7 +42,7 @@ export class AnnonceService {
     return this.http.post(API_URL + '.json', annonce).subscribe(
       (response: Annonce) => {
         this.annonces.push(response);
-        this.emitAnnonces();
+        console.log(response);
       },
       (error) => {
        console.log(error);
@@ -67,10 +67,7 @@ export class AnnonceService {
   putAnnonce(id: number, annonce: Annonce) {
     return this.http.put(API_URL + '/' + id + '.json', annonce).subscribe(
       (response: Annonce) => {
-        const index = this.annonces.findIndex(d => d.id === id);
-        this.annonces.splice(index , 1);
-        this.annonces.push(response);
-        this.emitAnnonces();
+        console.log(response);
       },
       (error) => {
         console.log(error);

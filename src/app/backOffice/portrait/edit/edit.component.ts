@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
       nom : [this.portrait.nom, Validators.required],
       poste : [this.portrait.poste, Validators.required],
       description : [this.portrait.description, Validators.required],
-      date : [this.portrait.dateAjout, Validators.required]
+      date : ['', Validators.required]
     })
   }
 

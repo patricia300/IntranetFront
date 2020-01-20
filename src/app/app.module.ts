@@ -7,10 +7,8 @@ import { HomeComponent } from './FrontOffice/home/home.component';
 import { ListeActualiteComponent } from './FrontOffice/liste-actualite/liste-actualite.component';
 import { UnActualiteComponent } from './FrontOffice/un-actualite/un-actualite.component';
 import { NouveauxEmployeeComponent } from './FrontOffice/nouveaux-employee/nouveaux-employee.component';
-import { GroupeTalysComponent } from './FrontOffice/groupe-talys/groupe-talys.component';
 import { PortraitDuMoisComponent } from './FrontOffice/portrait-du-mois/portrait-du-mois.component';
 import { AcceuilComponent } from './FrontOffice/acceuil/acceuil.component';
-import { ListeGroupeTalysComponent } from './FrontOffice/liste-groupe-talys/liste-groupe-talys.component';
 import { ActualiteComponent } from './backOffice/actualite/actualite.component';
 import { NouveauEmployeComponent } from './backOffice/nouveau-employe/nouveau-employe.component';
 import { BHomeComponent } from './backOffice/bhome/bhome.component';
@@ -30,6 +28,7 @@ import { EditComponent } from './backOffice/portrait/edit/edit.component';
 import { ListeAnnonceComponent } from './backOffice/annonce/liste-annonce/liste-annonce.component';
 import { AjoutAnnonceComponent } from './backOffice/annonce/ajout-annonce/ajout-annonce.component';
 import { EditAnnonceComponent } from './backOffice/annonce/edit-annonce/edit-annonce.component';
+import { AnnonceAcceuilComponent } from './FrontOffice/annonce/annonce-acceuil/annonce-acceuil.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +37,8 @@ import { EditAnnonceComponent } from './backOffice/annonce/edit-annonce/edit-ann
     ListeActualiteComponent,
     UnActualiteComponent,
     NouveauxEmployeeComponent,
-    GroupeTalysComponent,
     PortraitDuMoisComponent,
     AcceuilComponent,
-    ListeGroupeTalysComponent,
     ActualiteComponent,
     NouveauEmployeComponent,
     BHomeComponent,
@@ -55,6 +52,7 @@ import { EditAnnonceComponent } from './backOffice/annonce/edit-annonce/edit-ann
     ListeAnnonceComponent,
     AjoutAnnonceComponent,
     EditAnnonceComponent,
+    AnnonceAcceuilComponent,
    
   ],
   imports: [
