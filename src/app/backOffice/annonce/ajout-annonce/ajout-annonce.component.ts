@@ -25,15 +25,19 @@ export class AjoutAnnonceComponent implements OnInit {
   initForm() {
     this.annonceForm = this.formBuilder.group({
       titre: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      actif : ['']
     });
 }
 
 onSave() {
   const titre = this.annonceForm.get('titre').value;
   const description = this.annonceForm.get('description').value;
+  const actif = this.annonceForm.get('actif').value;
+  console.log(actif);
   const dateAjout = new Date();
-  const annonce = new Annonce(titre, description, dateAjout);
+  const annonce = new Annonce(titre, description, dateAjout,actif);
+  console.log(annonce);
   this.annonceService.postAnnonce(annonce)
   this.router.navigate(['annonce']);
 }

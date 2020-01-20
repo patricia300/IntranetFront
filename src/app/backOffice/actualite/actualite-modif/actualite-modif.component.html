@@ -29,6 +29,11 @@
             <label>date Ajout : {{actualite.dateAjout | date:'d/M/y HH:MM'}} </label>
             <input class="form-control z-depth-1" type="datetime-local" formControlName="dateAjout"/>
           </div>
+          <!-- Default checked -->
+          <div class="custom-control custom-checkbox">
+           <input type="checkbox" class="custom-control-input" id="defaultChecked2" formControlName="actif">
+           <label class="custom-control-label" for="defaultChecked2">Actif</label>
+          </div>
         </div>
       </div>
     

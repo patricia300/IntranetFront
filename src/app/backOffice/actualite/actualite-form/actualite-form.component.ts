@@ -24,7 +24,8 @@ export class ActualiteFormComponent implements OnInit {
   initForm() {
       this.actualiteForm = this.formBuilder.group({
         titre: ['', Validators.required],
-        description: ['', Validators.required]
+        description: ['', Validators.required],
+        actif : ['']
       });
   }
 
@@ -42,9 +43,10 @@ export class ActualiteFormComponent implements OnInit {
 
     const titre = this.actualiteForm.get('titre').value;
     const description = this.actualiteForm.get('description').value;
+    const actif = this.actualiteForm.get('actif').value;
+    console.log(actif);
     const dateAjout = new Date();
-    
-    const actualite = new Actualite(titre, description, dateAjout);
+    const actualite = new Actualite(titre, description, dateAjout , actif);
     this.actualiteService.postActualite(actualite , fd);
     this.router.navigate(['actualiteB']);
   }

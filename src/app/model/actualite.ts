@@ -5,7 +5,8 @@ export class Actualite {
   dateAjout: Date;
   image : any;
   contentUrl : string;
+  actif : boolean
   // @ts-ignore
-  constructor(public titre: string, public description: string, public dateAjout: Date) {
+  constructor(public titre: string, public description: string, public dateAjout: Date, public actif : boolean) {
   }
 }

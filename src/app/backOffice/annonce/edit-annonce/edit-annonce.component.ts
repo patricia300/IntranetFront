@@ -33,7 +33,8 @@ export class EditAnnonceComponent implements OnInit {
       id : [this.annonce.id, Validators.required],
       titre: [this.annonce.titre, Validators.required],
       description: [this.annonce.description, Validators.required],
-      dateAjout : ['', Validators.required]
+      dateAjout : [''],
+      actif : [this.annonce.actif]
     });   
 }
 
@@ -41,8 +42,8 @@ onModify() {
   const titre = this.modificationForm.get('titre').value;
   const description = this.modificationForm.get('description').value;
   const dateAjout = this.modificationForm.get('dateAjout').value;
-
-  const annonce = new Annonce(titre, description, dateAjout);
+  const actif = this.modificationForm.get('actif').value;
+  const annonce = new Annonce(titre, description, dateAjout , actif);
   this.annonceService.putAnnonce(this.id , annonce);
   this.router.navigate(['annonce']);
 

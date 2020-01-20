@@ -35,7 +35,8 @@ export class ActualiteModifComponent implements OnInit {
         id : [this.actualite.id, Validators.required],
         titre: [this.actualite.titre, Validators.required],
         description: [this.actualite.description, Validators.required],
-        dateAjout : ['', Validators.required]
+        dateAjout : [this.actualite.dateAjout],
+        actif : [this.actualite.actif]
       });   
   }
 
@@ -49,7 +50,9 @@ export class ActualiteModifComponent implements OnInit {
     const titre = this.modificationForm.get('titre').value;
     const description = this.modificationForm.get('description').value;
     const dateAjout = this.modificationForm.get('dateAjout').value;
-    const actualite = new Actualite(titre, description, dateAjout);
+    const actif = this.modificationForm.get('actif').value;
+    console.log(actif);
+    const actualite = new Actualite(titre, description, dateAjout , actif);
 
     if(this.selectedFile != null){
       const fd = new FormData();

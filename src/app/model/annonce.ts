@@ -3,7 +3,8 @@ export class Annonce {
     titre: string;
     description: string;
     dateAjout: Date;
+    actif : boolean
   // @ts-ignore
-  constructor(public titre: string, public description: string, public dateAjout: Date) {
+  constructor(public titre: string, public description: string, public dateAjout: Date , public actif : boolean) {
   }
 }
