@@ -26,7 +26,12 @@ export class ActualiteComponent implements OnInit, OnDestroy {
   }
 
   onDelete(actualite : Actualite) {
-    this.actualiteService.deleteActualite(actualite);
+    if(actualite.image != null){
+      this.actualiteService.deleteActualite(actualite);
+    }else{
+      this.actualiteService.deleteActualiteSansImage(actualite.id);
+    }
+    
   }
 
   ngOnDestroy(): void {

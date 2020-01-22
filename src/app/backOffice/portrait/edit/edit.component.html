@@ -9,18 +9,26 @@
         <label>Nom</label>
         <input class="form-control z-depth-1" value="{{portrait.nom}}" formControlName="nom"/>
       </div>
-      <div class="form-group shadow-textarea">
-        <label>poste</label>
-        <input class="form-control z-depth-1" value="{{portrait.poste}}" formControlName="poste"/>
-      </div>
+      <div class="row">
+        <div class="form-group shadow-textarea">
+          <label>poste</label>
+          <input class="form-control z-depth-1" value="{{portrait.poste}}" formControlName="poste"/>
+        </div>
+        <div class="form-group shadow-textarea col-md-6">
+          <label>mois</label>
+          <select class="browser-default custom-select"  formControlName="mois">
+            <option *ngFor="let moi of mois" value="{{moi}}">{{moi}}</option>
+          </select>
+        </div>
+      </div>     
       <div class="row">
         <div class="col-md-3">
           <img [src]="Url + portrait.contentUrl" alt="">
         </div>
         <div class="col-md-9">
           <div class="form-group shadow-textarea">
-            <label>date ajout : {{portrait.dateAjout | date:'d/M/y HH:MM'}}</label>
-            <input class="form-control z-depth-1" type="datetime-local" formControlName="date"/>
+            <label>date</label>
+            <input class="form-control z-depth-1" type="datetime"  value="{{portrait.dateAjout | date:'dd/MM/y HH:MM'}}" formControlName="date"/>
           </div>
           <div class="input-group">
             <div class="input-group-prepend">

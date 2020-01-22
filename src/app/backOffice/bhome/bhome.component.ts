@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavService } from 'src/app/service/side-nav.service';
 
 @Component({
   selector: 'app-bhome',

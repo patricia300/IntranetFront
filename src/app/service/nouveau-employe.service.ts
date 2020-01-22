@@ -4,6 +4,7 @@ import {Subject, Subscription} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { MediaObjectService } from './media-object.service';
 import {MediaObject} from '../model/media-object';
+import { error } from 'protractor';
 
 const API_URL = 'http://127.0.0.1:8000/api/nouveau_employes';
 const IMAGE_URL = 'http://127.0.0.1:8000/api/media_objects';
@@ -65,6 +66,18 @@ export class NouveauEmployeService {
     );
   }
 
+  postNouveauEmployeSansImage(nouveauEmploye : NouveauEmploye){
+    this.http.post(API_URL + '.json' , nouveauEmploye).subscribe(
+      (response : NouveauEmploye) => {
+        this.nouveauEmployes.push(response);
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   deleteNouveauEmploye(deleted : NouveauEmploye){
     let i , tmp = '';
     for(i=19 ; i < deleted.image.length ; i++){
@@ -82,6 +95,17 @@ export class NouveauEmployeService {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  deleteNouveauSansImage(id : number){
+    this.http.delete(API_URL + '/' + id + '.json').subscribe(
+      ()=>{
+        console.log('suppression avec succes')
+        const index = this.nouveauEmployes.findIndex(d => d.id === id);
+        this.nouveauEmployes.splice(index,1);
+        this.emitNouveauEmploye();
       }
     );
   }

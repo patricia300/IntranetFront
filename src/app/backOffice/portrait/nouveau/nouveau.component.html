@@ -6,9 +6,17 @@
         <label>Nom</label>
         <input class="form-control z-depth-1" formControlName="nom"/>
       </div>
-      <div class="form-group shadow-textarea">
-        <label>poste</label>
-        <input class="form-control z-depth-1" formControlName="poste"/>
+      <div class="row">
+        <div class="form-group shadow-textarea col-md-6">
+          <label>poste</label>
+          <input class="form-control z-depth-1" formControlName="poste"/>
+        </div>
+        <div class="form-group shadow-textarea col-md-6">
+          <label>mois</label>
+          <select class="browser-default custom-select"  formControlName="mois">
+            <option *ngFor="let moi of mois" value="{{moi}}">{{moi}}</option>
+          </select>
+        </div>
       </div>
       <div class="input-group">
         <div class="input-group-prepend">

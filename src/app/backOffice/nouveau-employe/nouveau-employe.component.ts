@@ -31,7 +31,13 @@ export class NouveauEmployeComponent implements OnInit, OnDestroy {
   }
 
   onDelete(nouveau : NouveauEmploye){
-    this.nouveauEmployeService.deleteNouveauEmploye(nouveau);
+    if(nouveau.image != null){
+      this.nouveauEmployeService.deleteNouveauEmploye(nouveau);
+    }
+    else{
+      this.nouveauEmployeService.deleteNouveauSansImage(nouveau.id);
+    }
+   
   }
 
   ngOnDestroy(): void {

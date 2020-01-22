@@ -13,6 +13,7 @@ export class NouveauComponent implements OnInit{
   
   selectedFile = null;
   portraitForm : FormGroup;
+  mois = ['Janvier' , 'Février' , 'Mars' , 'Avril' , 'Mai' , 'Juin' , 'Juillet' , 'Août' , 'Septembre' , 'Octobre' ,'Novembre' , 'Décembre']
   constructor(
     private portraitService : PortraitService,
     private formBuilder : FormBuilder , 
@@ -27,7 +28,8 @@ export class NouveauComponent implements OnInit{
     this.portraitForm = this.formBuilder.group({
       nom : ['', Validators.required],
       poste : ['', Validators.required],
-      description : ['', Validators.required]
+      description : ['', Validators.required],
+      mois : ['',Validators.required]
     })
   }
 
@@ -37,18 +39,26 @@ export class NouveauComponent implements OnInit{
   }
    
   onSave() {
-    const fd = new FormData();
-    console.log(this.selectedFile);
-    fd.append('file' , this.selectedFile);
-    console.log(fd);
-   
+
     let nom = this.portraitForm.get('nom').value;
     let poste = this.portraitForm.get('poste').value;
     let description = this.portraitForm.get('description').value;
+    let mois = this.portraitForm.get('mois').value;
     let date = new Date();
-    let portrait = new Portrait(nom, poste , description ,date );
+    let portrait = new Portrait(nom, poste , description ,date,mois);
     console.log(portrait);
-    this.portraitService.postPortrait(portrait , fd);
+
+    if(this.selectedFile != null){
+      const fd = new FormData();
+      console.log(this.selectedFile);
+      fd.append('file' , this.selectedFile);
+      console.log(fd);
+      this.portraitService.postPortrait(portrait , fd);
+    }
+    else{
+      this.portraitService.postPortraitSansImage(portrait);
+    }
+  
     this.router.navigate(['portrait']);
   }
 

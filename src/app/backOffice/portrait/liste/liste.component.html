@@ -13,6 +13,8 @@
       <th scope="col">#</th>
       <th scope="col">nom</th>
       <th scope="col">poste</th>
+      <th scope="col">mois</th>
+      <th scope="col">actif</th>
       <th scope="col">description</th>
       <th scope="col">date</th>
       <th scope="col">image</th>
@@ -24,7 +26,9 @@
       <th scope="row">{{portrait.id}}</th>
       <td>{{portrait.nom}}</td>
       <td>{{portrait.poste}}</td>
-      <td [innerHtml] = "portrait.description" width ="800vh"></td>
+      <td>{{portrait.mois}}</td>
+      <td>{{portrait.actif}}</td>
+      <td [innerHtml] ="portrait.description" width ="500vh"></td>
       <td>{{portrait.dateAjout |  date:'d/M/y HH:MM'}}</td>
       <td><img [src]="Url + portrait.contentUrl" alt="" style="width:70px;height:60px;border-radius: 50%;"></td>
       <td>

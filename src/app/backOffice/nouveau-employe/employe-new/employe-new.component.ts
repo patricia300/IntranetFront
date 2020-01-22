@@ -35,16 +35,20 @@ export class EmployeNewComponent implements OnInit {
   }
 
   onSave() {
-    const fd = new FormData();
-    console.log(this.selectedFile);
-    fd.append('file' , this.selectedFile);
-    console.log(fd);
-   
     let nom = this.nouveauEmployeForm.get('nom').value;
     let poste = this.nouveauEmployeForm.get('poste').value;
-    
     let nouveauEmploye = new NouveauEmploye(nom, poste);
-    this.nouveauEmployeService.postNouveauEmploye(nouveauEmploye , fd);
+
+    if(this.selectedFile != null){
+      const fd = new FormData();
+      console.log(this.selectedFile);
+      fd.append('file' , this.selectedFile);
+      console.log(fd);
+      this.nouveauEmployeService.postNouveauEmploye(nouveauEmploye , fd);
+    }else{
+      this.nouveauEmployeService.postNouveauEmployeSansImage(nouveauEmploye);
+    }
+   
     this.router.navigate(['nouveau']);
   }
  

@@ -51,7 +51,6 @@ export class ActualiteModifComponent implements OnInit {
     const description = this.modificationForm.get('description').value;
     const dateAjout = this.modificationForm.get('dateAjout').value;
     const actif = this.modificationForm.get('actif').value;
-    console.log(actif);
     const actualite = new Actualite(titre, description, dateAjout , actif);
 
     if(this.selectedFile != null){

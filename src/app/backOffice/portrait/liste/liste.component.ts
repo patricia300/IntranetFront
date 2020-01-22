@@ -25,7 +25,12 @@ export class ListeComponent implements OnInit , OnDestroy {
   }
 
   onDelete(portrait : Portrait){
+    if(portrait.image != null){
     this.portraitService.deletePortrait(portrait);
+    }
+    else{
+      this.portraitService.deletePortraitSansImage(portrait.id);
+    }
   }
 
   ngOnDestroy(){

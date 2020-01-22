@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
   portrait : Portrait;
   Url = 'http://localhost:8000';
   id;
+  mois = ['Janvier' , 'Février' , 'Mars' , 'Avril' , 'Mai' , 'Juin' , 'Juillet' , 'Août' , 'Septembre' , 'Octobre' ,'Novembre' , 'Décembre']
 
   constructor(
     private portraitService : PortraitService,
@@ -40,7 +41,8 @@ export class EditComponent implements OnInit {
       nom : [this.portrait.nom, Validators.required],
       poste : [this.portrait.poste, Validators.required],
       description : [this.portrait.description, Validators.required],
-      date : ['', Validators.required]
+      date : [this.portrait.dateAjout , Validators.required],
+      mois : [this.portrait.mois,Validators.required]
     })
   }
 
@@ -54,7 +56,8 @@ export class EditComponent implements OnInit {
     const poste = this.portraitForm.get('poste').value;
     const description = this.portraitForm.get('description').value;
     const date = this.portraitForm.get('date').value;
-    const portrait = new Portrait(nom ,poste , description , date);
+    const mois = this.portraitForm.get('mois').value;
+    const portrait = new Portrait(nom ,poste , description , date , mois);
 
     if(this.selectedFile != null){
       const fd = new FormData();

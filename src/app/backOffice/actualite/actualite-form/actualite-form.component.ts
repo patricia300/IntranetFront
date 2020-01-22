@@ -36,18 +36,23 @@ export class ActualiteFormComponent implements OnInit {
 
 
   onSave() {
-    const fd = new FormData();
-    console.log(this.selectedFile);
-    fd.append('file' , this.selectedFile);
-    console.log(fd);
-
     const titre = this.actualiteForm.get('titre').value;
     const description = this.actualiteForm.get('description').value;
     const actif = this.actualiteForm.get('actif').value;
-    console.log(actif);
     const dateAjout = new Date();
     const actualite = new Actualite(titre, description, dateAjout , actif);
-    this.actualiteService.postActualite(actualite , fd);
+    
+    if(this.selectedFile != null){
+      const fd = new FormData();
+      console.log(this.selectedFile);
+      fd.append('file' , this.selectedFile);
+      console.log(fd);
+      this.actualiteService.postActualite(actualite , fd);
+    }
+    else{
+      this.actualiteService.postActualiteSansImage(actualite);
+    }
+   
     this.router.navigate(['actualiteB']);
   }
 

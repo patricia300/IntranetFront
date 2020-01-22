@@ -65,6 +65,18 @@ export class ActualiteService {
     );
   }
 
+  postActualiteSansImage(actualite : Actualite){
+    this.http.post(API_URL + '.json' , actualite).subscribe(
+      (response : Actualite) => {
+        this.actualites.push(response);
+        this.emitActualites();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   deleteActualite(deleted: Actualite) {
     let i , tmp = '';
     for(i=19 ; i < deleted.image.length ; i++){
@@ -80,6 +92,19 @@ export class ActualiteService {
         this.emitActualites();
         this.mediaObjectService.deleteImage(idImage);
     },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  deleteActualiteSansImage(id : number){
+    this.http.delete(API_URL + '/' + id + '.json').subscribe(
+      () => {
+        const index = this.actualites.findIndex(d => d.id === id);
+        this.actualites.splice(index , 1);
+        this.emitActualites();
+      },
       (error) => {
         console.log(error);
       }

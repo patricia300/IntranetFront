@@ -46,9 +46,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/mdbootstrap/css/bootstrap.min.css",
+              "node_modules/mdbootstrap/css/mdb.min.css",
+              "node_modules/mdbootstrap/css/addons/datatables-select.min.css",
+              "node_modules/mdbootstrap/css/addons/datatables.min.css",
+              "node_modules/mdbootstrap/css/addons/directives.min.css",
+              "node_modules/mdbootstrap/css/modules/animations-extended.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/mdbootstrap/js/bootstrap.min.js",
+              "node_modules/mdbootstrap/js/query.min.js",
+              "node_modules/mdbootstrap/js/mdb.min.js",
+              "node_modules/mdbootstrap/js/popper.min.js",
+              "node_modules/mdbootstrap/js/addons/datatables-select.min.js",
+              "node_modules/mdbootstrap/js/addons/datatables.min.js",
+              "node_modules/mdbootstrap/js/addons/directives.min.js"
+            ]
           },
           "configurations": {
             "production": {

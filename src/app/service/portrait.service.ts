@@ -53,6 +53,7 @@ export class PortraitService implements OnDestroy {
         this.http.post(API_URL + '.json', portrait).subscribe(
            (responseP: Portrait) => {
              this.portraits.push(responseP);
+             this.emitPortrait();
             //console.log(response);
            },
            (error: Error) => {
@@ -64,6 +65,19 @@ export class PortraitService implements OnDestroy {
         console.log(error);
       }
     );
+  }
+
+  postPortraitSansImage(portrait : Portrait) {
+      this.http.post(API_URL + '.json', portrait).subscribe(
+        (response : Portrait) => {
+          this.portraits.push(response);
+          this.emitPortrait();
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   
@@ -84,6 +98,17 @@ export class PortraitService implements OnDestroy {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  deletePortraitSansImage(id:number){
+    this.http.delete(API_URL + '/' + id + '.json').subscribe(
+      () => {
+        console.log('suppression avec succes')
+        const index = this.portraits.findIndex(d => d.id === id);
+        this.portraits.splice(index,1);
+        this.emitPortrait();
       }
     );
   }
